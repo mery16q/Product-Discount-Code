@@ -72,6 +72,10 @@ const loadModel = (sequelize, DataTypes) => {
       type: DataTypes.DATE,
       defaultValue: new Date()
     },
+    discount: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0
+    },
     updatedAt: {
       allowNull: false,
       type: DataTypes.DATE,

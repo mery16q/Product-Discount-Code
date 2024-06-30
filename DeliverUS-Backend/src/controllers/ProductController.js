@@ -107,12 +107,28 @@ const popular = async function (req, res) {
   }
 }
 
+const changePromotion = async function (req, res) {
+  try {
+    const product = await Product.findByPk(req.params.productId)
+    if (product.promoted === true) {
+      product.promoted = false
+    } else if (product.promoted === false) {
+      product.promoted = true
+    }
+    await product.save()
+    res.json(product)
+  } catch (err) {
+    res.status(500).send(err)
+  }
+}
+
 const ProductController = {
   indexRestaurant,
   show,
   create,
   update,
   destroy,
-  popular
+  popular,
+  changePromotion
 }
 export default ProductController
